@@ -10,6 +10,14 @@ void cyclic_rearrange_arr_i_i(vector<int>& arr){
         }
     }
 }
+
+void reverse_integer_array(vector<int>& arr, int start, int end){
+    while (start < end){
+        swap(arr[start], arr[end]);
+        start++;
+        end--;
+    }
+}
 int main() {
     int n;
     cin >> n;
@@ -17,7 +25,8 @@ int main() {
     for (int i = 0; i < n; ++i) {
         cin >> arr[i];
     }
-    cyclic_rearrange_arr_i_i(arr);
+//    cyclic_rearrange_arr_i_i(arr);
+    reverse_integer_array(arr, 6, 7);
     for (int i = 0; i < n; ++i) {
         cout << arr[i] << " ";
     }

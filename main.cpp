@@ -66,9 +66,28 @@ int move_all_zeros_at_the_end_of_array(vector<int>& arr){
         }
     }
 }
+int elements_less_than_or_equal_to_k(vector<int>& arr, int k){
+    int i=0;
+    int j=0;
+    int count=0;
+    while(i < arr.size() && j < arr.size()){
+        if(arr[i] <= k){
+            j++;
+            i++;
+        }else if(arr[j] > k){
+            j++;
+        }else if(arr[j] <= k){
+            swap(arr[i], arr[j]);
+            i++;
+            count++;
+        }
+    }
+    return count;
+}
 int main() {
-    int n;
+    int n,k;
     cin >> n;
+    cin >> k;
     vector<int> arr(n);
     for (int i = 0; i < n; ++i) {
         cin >> arr[i];
@@ -77,7 +96,8 @@ int main() {
 //    reverse_integer_array(arr, 6, 7);
 //    odd_is_less_than_even(arr);
 //    negative_positive(arr);
-    move_all_zeros_at_the_end_of_array(arr);
+//    move_all_zeros_at_the_end_of_array(arr);
+    cout << elements_less_than_or_equal_to_k(arr, k) << endl;
     copy(arr.begin(),arr.end(),ostream_iterator<int>(cout, " "));
 }
 // -1 -1 6 1 9 3 2 -1 4 -1
@@ -85,3 +105,6 @@ int main() {
 //1 2 0 4 3 0 5 0
 //1 2 0 0 0 3 6
 //1 9 8 4 0 0 2 7 0 6 0 9
+//0 1 9 8 4 0 0 2 7 0 6 0 9
+//2 1 5 6 3
+//2 7 9 5 8 7 4

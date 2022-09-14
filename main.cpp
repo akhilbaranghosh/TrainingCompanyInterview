@@ -33,6 +33,22 @@ void odd_is_less_than_even(vector<int>& arr){
         arr[i] = temp[j++];
     }
 }
+int negative_positive(vector<int>& arr){
+    int j = -1;
+    for (int i = 0; i < arr.size(); ++i) {
+        if(arr[i] < 0){
+            j++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    int pos = j + 1;
+    int neg = 0;
+    while(pos < arr.size() && neg < arr.size() && arr[neg] < 0){
+        swap(arr[pos], arr[neg]);
+        pos ++;
+        neg+=2;
+    }
+}
 int main() {
     int n;
     cin >> n;
@@ -42,7 +58,9 @@ int main() {
     }
 //    cyclic_rearrange_arr_i_i(arr);
 //    reverse_integer_array(arr, 6, 7);
-    odd_is_less_than_even(arr);
+//    odd_is_less_than_even(arr);
+    negative_positive(arr);
     copy(arr.begin(),arr.end(),ostream_iterator<int>(cout, " "));
 }
 // -1 -1 6 1 9 3 2 -1 4 -1
+//-1 2 -3 4 5 6 -7 8 9

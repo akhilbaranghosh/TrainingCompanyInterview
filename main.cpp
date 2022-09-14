@@ -49,6 +49,23 @@ int negative_positive(vector<int>& arr){
         neg+=2;
     }
 }
+int move_all_zeros_at_the_end_of_array(vector<int>& arr){
+    int end = arr.size() - 1;
+    int i = 0;
+    while (i < end){
+        if (arr[i] == 0){
+            if(arr[end] != 0){
+                swap(arr[i], arr[end]);
+                end --;
+                i ++;
+            } else{
+                end --;
+            }
+        }else{
+            i++;
+        }
+    }
+}
 int main() {
     int n;
     cin >> n;
@@ -59,8 +76,12 @@ int main() {
 //    cyclic_rearrange_arr_i_i(arr);
 //    reverse_integer_array(arr, 6, 7);
 //    odd_is_less_than_even(arr);
-    negative_positive(arr);
+//    negative_positive(arr);
+    move_all_zeros_at_the_end_of_array(arr);
     copy(arr.begin(),arr.end(),ostream_iterator<int>(cout, " "));
 }
 // -1 -1 6 1 9 3 2 -1 4 -1
 //-1 2 -3 4 5 6 -7 8 9
+//1 2 0 4 3 0 5 0
+//1 2 0 0 0 3 6
+//1 9 8 4 0 0 2 7 0 6 0 9
